@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Movie from '../components/Movie';
 
-export default class MovieList extends Component {
+export default class NowPlayingFull extends Component {
     render() {
         return (
             <div className="movie-grid">

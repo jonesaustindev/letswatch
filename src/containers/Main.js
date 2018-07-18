@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import MovieList from './MovieList';
+import NowPlayingFull from './NowPlayingFull';
 
 export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
             results: [],
+            nowPlaying: [],
             searchDisplay: '',
             searchApi: ''
         };
         this.timeout = 0;
+    }
+
+    componentDidMount() {
+        this.nowPlayingMovieApi();
     }
 
     doSearch(e) {
@@ -26,12 +32,16 @@ export default class Main extends Component {
         this.timeout = setTimeout(() => {
             if (search) {
                 this.searchMovieApi();
+                this.setState({
+                    nowPlaying: []
+                });
             } else {
                 this.setState({
                     results: []
                 });
+                this.nowPlayingMovieApi();
             }
-        }, 300);
+        }, 500);
     }
 
     searchMovieApi = async () => {
@@ -42,8 +52,16 @@ export default class Main extends Component {
         });
     }
 
+    nowPlayingMovieApi = async () => {
+        let response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`);
+        let body = await response.json();
+        this.setState({
+            nowPlaying: body.results
+        });
+    }
+
     render() {
-        const { results, searchDisplay } = this.state;
+        const { results, searchDisplay, nowPlaying } = this.state;
 
         return (
             <div>
@@ -54,9 +72,10 @@ export default class Main extends Component {
                     onChange={e => this.doSearch(e)}
                     placeholder='Movie Title'
                 />
-                <MovieList
-                    results={results}
-                />
+                <div className="container">
+                    <MovieList results={results} />
+                    <NowPlayingFull results={nowPlaying} />
+                </div>
             </div>
         )
     }

@@ -4,7 +4,7 @@ import Main from './containers/Main';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App grid-container">
         <h1>Let's Watch</h1>
         <Main />
       </div>
