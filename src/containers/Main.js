@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import MovieList from './MovieList';
 import NowPlayingFull from './NowPlayingFull';
 
@@ -72,10 +73,22 @@ export default class Main extends Component {
                     onChange={e => this.doSearch(e)}
                     placeholder='Movie Title'
                 />
-                <div className="container">
-                    <MovieList results={results} />
-                    <NowPlayingFull results={nowPlaying} />
-                </div>
+                <Switch>
+                    <Route exact path='/' render={() => (
+                        <div className="container">
+                            {
+                                searchDisplay ? <MovieList results={results} /> : <NowPlayingFull results={nowPlaying} />
+                            }
+                        </div>
+                    )}
+                    />
+                    <Route path='/movie' render={() => (
+                        <div className="container">
+                            <h1>Movie Page</h1>
+                        </div>
+                    )}
+                    />
+                </Switch>
             </div>
         )
     }
