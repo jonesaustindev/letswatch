@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ActorList from '../containers/ActorList';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 
 export default class Movie extends Component {
     constructor(props) {
@@ -43,7 +44,7 @@ export default class Movie extends Component {
                     <div className="cast">
                         <ActorList credits={this.state.credits} />
                     </div>
-                    <a href="">View More Info</a>
+                    <Link to='/view/ijawej93288501'>Click</Link>
                 </div>
             </div>
         )

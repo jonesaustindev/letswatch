@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import MovieList from './MovieList';
 import NowPlayingFull from './NowPlayingFull';
+import MoviePage from '../components/MoviePage';
 
 export default class Main extends Component {
     constructor(props) {
@@ -66,25 +67,32 @@ export default class Main extends Component {
 
         return (
             <div>
-                <h3>Main</h3>
-                <input
-                    type="text"
-                    value={searchDisplay}
-                    onChange={e => this.doSearch(e)}
-                    placeholder='Movie Title'
-                />
                 <Switch>
-                    <Route exact path='/' render={() => (
-                        <div className="container">
+                    <Route exact path='/' render={(props) => (
+                        <div>
+                            <h3>Main</h3>
+                            <input
+                                type="text"
+                                value={searchDisplay}
+                                onChange={e => this.doSearch(e)}
+                                placeholder='Movie Title'
+                            />
                             {
-                                searchDisplay ? <MovieList results={results} /> : <NowPlayingFull results={nowPlaying} />
+                                searchDisplay ? <MovieList results={results} {...props} /> : <NowPlayingFull results={nowPlaying} {...props} />
                             }
                         </div>
                     )}
                     />
-                    <Route path='/movie' render={() => (
-                        <div className="container">
-                            <h1>Movie Page</h1>
+                    <Route path='/view/:movieId' render={(props) => (
+                        <div>
+                            <h3>Main</h3>
+                            <input
+                                type="text"
+                                value={searchDisplay}
+                                onChange={e => this.doSearch(e)}
+                                placeholder='Movie Title'
+                            />
+                            <MoviePage results={nowPlaying} {...props} />
                         </div>
                     )}
                     />
