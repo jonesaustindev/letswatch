@@ -10,6 +10,7 @@ export default class Movie extends Component {
             credits: []
         };
         this.getMovieCredits = this.getMovieCredits.bind(this);
+        this.movieButton = this.movieButton.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +23,10 @@ export default class Movie extends Component {
         this.setState({
             credits: body.cast
         });
+    }
+
+    movieButton() {
+        this.props.history.push('/view/1234');
     }
     render() {
         const { result } = this.props;
@@ -44,7 +49,7 @@ export default class Movie extends Component {
                     <div className="cast">
                         <ActorList credits={this.state.credits} />
                     </div>
-                    <Link to='/view/ijawej93288501'>Click</Link>
+                    <button onClick={this.movieButton}>Click</button>
                 </div>
             </div>
         )
