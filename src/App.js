@@ -12,9 +12,7 @@ const App = () => (
       <div className='App grid-container'>
         <h1>Let's Watch</h1>
         <SearchBar />
-        <div>
-          <h1>Hello</h1>
-        </div>
+        <Main />
       </div>
     </Router>
   </Provider>

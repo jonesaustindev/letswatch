@@ -1,29 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Main from '../containers/Main';
+import { bindActionCreators } from 'redux';
+import { fetchSearchMovie } from '../store/actions/searchMovie';
+
 
 class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            results: [],
-            nowPlaying: [],
-            searchDisplay: '',
-            searchApi: ''
+            searchDisplay: ''
         };
         this.timeout = 0;
-    }
-
-    componentDidMount() {
-        this.nowPlayingMovieApi();
     }
 
     doSearch(e) {
         let search = e.target.value;
         let searchString = search.replace(/\s+/g, '+').toLowerCase();
         this.setState({
-            searchDisplay: search,
-            searchApi: searchString
+            searchDisplay: search
         });
 
         if (this.timeout) {
@@ -31,15 +25,7 @@ class SearchBar extends Component {
         }
         this.timeout = setTimeout(() => {
             if (search) {
-                this.searchMovieApi();
-                this.setState({
-                    nowPlaying: []
-                });
-            } else {
-                this.setState({
-                    results: []
-                });
-                this.nowPlayingMovieApi();
+                this.props.fetchSearchMovie(searchString);
             }
         }, 500);
     }
@@ -84,4 +70,9 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(SearchBar);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ fetchSearchMovie }, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

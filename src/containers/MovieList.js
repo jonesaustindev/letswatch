@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Movie from '../components/Movie';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchNowPlaying } from '../store/actions/nowPlaying';
 
-export default class MovieList extends Component {
+class MovieList extends Component {
     render() {
         return (
             <div className="container movie-grid">
@@ -14,3 +17,15 @@ export default class MovieList extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieList);

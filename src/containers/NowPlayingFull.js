@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Movie from '../components/Movie';
-import { nowPlayingData } from '../actions/actionCreators';
+import { fetchNowPlaying } from '../store/actions/nowPlaying';
 
-export default class NowPlayingFull extends Component {
+class NowPlayingFull extends Component {
     componentDidMount() {
-        
+        this.props.fetchNowPlaying();
     }
     render() {
+        const { nowPlaying } = this.props;
+        console.log(nowPlaying.movies);
         return (
             <div className="container movie-grid">
-                {
-                    this.props.results.map((result, index) => {
-                        return <Movie result={result} key={index}  />
-                    })
-                }
+            {
+                nowPlaying.movies.map((result, index) => {
+                    return <Movie result={result} key={index}  />
+                })
+            }
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        nowPlaying: state.nowPlaying
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ fetchNowPlaying }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NowPlayingFull);

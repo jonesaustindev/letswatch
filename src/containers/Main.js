@@ -6,12 +6,21 @@ import MoviePage from '../components/MoviePage';
 import SearchBar from '../components/SearchBar';
 
 const Main = props => {
+    const { searchMovies } = this.props;
     return (
         <div>
             <Switch>
                 <Route exact path='/' render={(props) => (
                     <div>
-                        <h3>Main</h3>
+                    {
+                        searchMovies ? <MovieList /> : <NowPlayingFull />
+                    }
+                    </div>
+                )}
+                />
+                <Route exact path='/search' render={(props) => (
+                    <div>
+                        
                     </div>
                 )}
                 />
@@ -26,6 +35,12 @@ const Main = props => {
     )
 }
 
+function mapStateToProps(state) {
+    return {
+        searchMovies: state.searchMovies
+    }
+}
+
 export default withRouter(
-    (Main)
+    connect(mapStateToProps, { searchMovies })(Main)
 );
