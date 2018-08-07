@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import Movie from '../components/Movie';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Movie from '../components/Movie';
 import { fetchNowPlaying } from '../store/actions/nowPlaying';
 
 class NowPlayingFull extends Component {
@@ -10,11 +10,10 @@ class NowPlayingFull extends Component {
     }
     render() {
         const { nowPlaying } = this.props;
-        console.log(nowPlaying.movies);
         return (
             <div className="container movie-grid">
             {
-                nowPlaying.movies.map((result, index) => {
+                nowPlaying.movies.slice(0, 8).map((result, index) => {
                     return <Movie result={result} key={index}  />
                 })
             }

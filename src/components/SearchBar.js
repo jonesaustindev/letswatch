@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchSearchMovie } from '../store/actions/searchMovie';
-
+import { Redirect } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchDisplay: ''
+            searchDisplay: '',
+            toSearch: false
         };
         this.timeout = 0;
     }
@@ -26,28 +28,32 @@ class SearchBar extends Component {
         this.timeout = setTimeout(() => {
             if (search) {
                 this.props.fetchSearchMovie(searchString);
+                this.setState({
+                    toSearch: true
+                })
             }
-        }, 500);
+        }, 800);
+
+        if (searchString.length === 0) {
+            this.setState({
+                toSearch: false
+            })
+        }
     }
 
-    searchMovieApi = async () => {
-        let response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${this.state.searchApi}`);
-        let body = await response.json();
-        this.setState({
-            results: body.results
-        });
-    }
-
-    nowPlayingMovieApi = async () => {
-        let response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`);
-        let body = await response.json();
-        this.setState({
-            nowPlaying: body.results
-        });
-    }
+    // {toSearch && (
+    //     <Redirect to='/search' />
+    // )}
 
     render() {
-        const { searchDisplay } = this.state;
+        const { searchDisplay, toSearch } = this.state;
+
+        let searched;
+        if(toSearch === true) {
+            searched = <Redirect to='/search' />;
+        } else {
+            searched = <Redirect to='/' />;
+        }
         return (
             <div>
                 <input
@@ -56,6 +62,7 @@ class SearchBar extends Component {
                     onChange={e => this.doSearch(e)}
                     placeholder='Movie Title'
                 />
+                {searched}
             </div>
         )
     }

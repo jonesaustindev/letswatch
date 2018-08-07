@@ -1,30 +1,32 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import MovieList from './MovieList';
 import NowPlayingFull from './NowPlayingFull';
 import MoviePage from '../components/MoviePage';
 import SearchBar from '../components/SearchBar';
+import { fetchSearchMovie } from '../store/actions/searchMovie';
+import { fetchNowPlaying } from '../store/actions/nowPlaying';
 
-const Main = props => {
-    const { searchMovies } = this.props;
+
+const Main = () => {
     return (
         <div>
             <Switch>
-                <Route exact path='/' render={(props) => (
+                <Route exact path='/' render={() => (
                     <div>
-                    {
-                        searchMovies ? <MovieList /> : <NowPlayingFull />
-                    }
+                        <NowPlayingFull />
                     </div>
                 )}
                 />
-                <Route exact path='/search' render={(props) => (
+                <Route exact path='/search' render={() => (
                     <div>
-                        
+                        <MovieList />
                     </div>
                 )}
                 />
-                <Route path='/view/:movieId' render={(props) => (
+                <Route exact path='/view/:movieId' render={() => (
                     <div>
                         <h3>Movie Page</h3>
                     </div>
@@ -35,12 +37,6 @@ const Main = props => {
     )
 }
 
-function mapStateToProps(state) {
-    return {
-        searchMovies: state.searchMovies
-    }
-}
-
 export default withRouter(
-    connect(mapStateToProps, { searchMovies })(Main)
+    (Main)
 );
