@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchSearchMovie } from '../store/actions/searchMovie';
 import { Redirect } from 'react-router';
-import { withRouter } from 'react-router-dom';
 
 class SearchBar extends Component {
     constructor(props) {

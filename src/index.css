@@ -105,11 +105,51 @@ body {
   font-size: 0.9em;
 }
 
-.cast {
-  padding-top: 8px;
+.movie-card-overview {
+  padding-top: 18px;
 }
 
-.cast p{
-  margin-top: 2px;
+.movie-card-overview p {
   margin-bottom: 2px;
+}
+
+.view-more {
+  text-decoration: none;
+  color: white;
+}
+
+.view-more:hover {
+  color: white;
+}
+
+/* Single Movie Page */
+.movie-content {
+  color: white;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.movie-content h1{
+  margin-bottom: 0;
+}
+
+.movie-content-poster {
+  height: 450px;
+  margin-top: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.movie-content-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 12px;
+  align-items: top;
+}
+
+.movie-content-details {
+  margin-top: 4px;
+}
+
+#runtime {
+  padding-bottom: 20px;
 }

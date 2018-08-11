@@ -8,6 +8,7 @@ import MoviePage from '../components/MoviePage';
 import SearchBar from '../components/SearchBar';
 import { fetchSearchMovie } from '../store/actions/searchMovie';
 import { fetchNowPlaying } from '../store/actions/nowPlaying';
+import SingleMovie from './SingleMovie';
 
 
 const Main = () => {
@@ -26,10 +27,8 @@ const Main = () => {
                     </div>
                 )}
                 />
-                <Route exact path='/view/:movieId' render={() => (
-                    <div>
-                        <h3>Movie Page</h3>
-                    </div>
+                <Route exact path='/view/:movieId' render={(props) => (
+                    <SingleMovie {...props} />
                 )}
                 />
             </Switch>

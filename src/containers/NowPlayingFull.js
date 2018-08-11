@@ -9,6 +9,7 @@ class NowPlayingFull extends Component {
         this.props.fetchNowPlaying();
     }
     render() {
+        console.log(this.props);
         const { nowPlaying } = this.props;
         return (
             <div className="container movie-grid">
