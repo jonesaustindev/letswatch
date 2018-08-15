@@ -25,19 +25,23 @@ class SearchBar extends Component {
             clearTimeout(this.timeout);
         }
         this.timeout = setTimeout(() => {
-            if (search) {
+            if (search.length > 0) {
                 this.props.fetchSearchMovie(searchString);
                 this.setState({
                     toSearch: true
                 })
+            } else {
+                this.setState({
+                    toSearch: false
+                })
             }
         }, 800);
 
-        if (searchString.length === 0) {
-            this.setState({
-                toSearch: false
-            })
-        }
+        // if (searchString.length === 0) {
+        //     this.setState({
+        //         toSearch: false
+        //     })
+        // }
     }
 
     // {toSearch && (

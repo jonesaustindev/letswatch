@@ -5,7 +5,7 @@ export function fetchViewMovie(movieId) {
         dispatch({
             type: 'FETCH_MOVIE'
         });
-        axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`)
+        axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits,videos,images,reviews`)
             .then(res => {
                 dispatch({
                     type: 'FETCH_MOVIE_FULFILLED',

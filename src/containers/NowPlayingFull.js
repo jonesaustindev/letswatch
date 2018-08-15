@@ -9,15 +9,14 @@ class NowPlayingFull extends Component {
         this.props.fetchNowPlaying();
     }
     render() {
-        console.log(this.props);
         const { nowPlaying } = this.props;
         return (
             <div className="container movie-grid">
-            {
-                nowPlaying.movies.slice(0, 8).map((result, index) => {
-                    return <Movie result={result} key={index}  />
-                })
-            }
+                {
+                    nowPlaying.movies.slice(0, 8).map((result, index) => {
+                        return <Movie result={result} key={index} />
+                    })
+                }
             </div>
         )
     }

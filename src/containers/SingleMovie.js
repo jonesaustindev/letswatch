@@ -5,12 +5,9 @@ import { fetchViewMovie } from '../store/actions/viewMovie';
 import MoviePage from '../components/MoviePage';
 
 class SingleMovie extends Component {
-    constructor(props){
-        super(props);
-    }
 
     componentDidMount() {
-        let movieId = parseInt(this.props.match.params.movieId);
+        let movieId = this.props.match.params.movieId;
         this.props.fetchViewMovie(movieId);
     }
 

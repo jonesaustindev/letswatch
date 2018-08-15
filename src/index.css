@@ -153,3 +153,69 @@ body {
 #runtime {
   padding-bottom: 20px;
 }
+
+.movie-interactions {
+  display: grid;
+  grid-template-columns: 60px 60px 60px 60px; 
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.movie-interactions i{
+  margin-right: 18px;
+  font-size: 28px;
+  padding-right: 0;
+}
+
+.movie-interactions a{
+  margin-right: 18px;
+  font-size: 28px;
+  padding-right: 0;
+}
+
+.movie-interactions a:hover{
+  cursor: pointer;
+}
+
+.top-billed-cast {
+  margin-top: 24px;
+}
+
+.actor-card {
+  display: inline-block;
+  height: 150px;
+  width: auto;
+  justify-content: space-around;
+}
+
+.actor-card p{
+  padding: 0;
+  margin: 0;
+}
+
+.actor-name {
+  font-size: 18px;
+}
+
+/* Modal */
+.modal-dialog {
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+
+
+.modal-body {
+  position:relative;
+  padding:0px;
+}
+.close {
+  position:absolute;
+  right:-30px;
+  top:0;
+  z-index:999;
+  font-size:2rem;
+  font-weight: normal;
+  color:#fff;
+  opacity:1;
+}
