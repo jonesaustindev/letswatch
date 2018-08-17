@@ -85,7 +85,7 @@ const MoviePage = ({ result }) => {
             </div>
             <div className="trailer text-center">
                 {
-                    result.credits && result.videos.results.slice(0, 1).map((results, index) => {
+                    result.videos && result.videos.results.slice(0, 1).map((results, index) => {
                         return <VideoPlayer
                             videoId={results.key}
                             key={index}

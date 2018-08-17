@@ -13,15 +13,15 @@ const Main = () => {
             <Navbar />
             <SearchBar />
             <Switch>
-                <Route exact path='/' render={() => (
+                <Route exact path='/' render={(props) => (
                     <div>
-                        <NowPlayingFull />
+                        <NowPlayingFull {...props} />
                     </div>
                 )}
                 />
-                <Route exact path='/search' render={() => (
+                <Route exact path='/search' render={(props) => (
                     <div>
-                        <MovieList />
+                        <MovieList {...props} />
                     </div>
                 )}
                 />
@@ -29,6 +29,11 @@ const Main = () => {
                     <SingleMovie {...props} />
                 )}
                 />
+                <Route exact path='/comingsoon' render={() => (
+                    <div className="container text-center">
+                        <h4>Currently working on adding user profiles so you can favorite, vote, and review all movies! Please check back soon.</h4>
+                    </div>
+                )} />
             </Switch>
         </div>
     )

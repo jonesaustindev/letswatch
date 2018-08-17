@@ -20,3 +20,11 @@ export function fetchViewMovie(movieId) {
             })
     }
 }
+
+export function clearMovie() {
+    return function(dispatch) {
+        dispatch({
+            type: 'CLEAR_MOVIE'
+        })
+    }
+}

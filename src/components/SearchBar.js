@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchSearchMovie } from '../store/actions/searchMovie';
+import { fetchSearchMovie, clearSearch } from '../store/actions/searchMovie';
 import { Redirect } from 'react-router';
 
 class SearchBar extends Component {
@@ -26,6 +26,7 @@ class SearchBar extends Component {
         }
         this.timeout = setTimeout(() => {
             if (search.length > 0) {
+                this.props.clearSearch();
                 this.props.fetchSearchMovie(searchString);
                 this.setState({
                     toSearch: true
@@ -36,17 +37,7 @@ class SearchBar extends Component {
                 })
             }
         }, 800);
-
-        // if (searchString.length === 0) {
-        //     this.setState({
-        //         toSearch: false
-        //     })
-        // }
     }
-
-    // {toSearch && (
-    //     <Redirect to='/search' />
-    // )}
 
     render() {
         const { searchDisplay, toSearch } = this.state;
@@ -60,6 +51,7 @@ class SearchBar extends Component {
         return (
             <div>
                 <input
+                    className="container-fluid"
                     type='text'
                     value={searchDisplay}
                     onChange={e => this.doSearch(e)}
@@ -81,7 +73,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchSearchMovie }, dispatch);
+    return bindActionCreators({ fetchSearchMovie, clearSearch }, dispatch);
 }
 
 

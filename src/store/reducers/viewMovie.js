@@ -1,4 +1,4 @@
-export default function reducer(state={
+export default function reducer(state = {
     singleMovie: [],
     fetching: false,
     fetched: false,
@@ -7,14 +7,14 @@ export default function reducer(state={
     switch (action.type) {
         case 'FETCH_MOVIE': {
             return {
-                ...state, 
+                ...state,
                 fetching: true
             }
         }
         case 'FETCH_MOVIE_REJECTED': {
             return {
-                ...state, 
-                fetching: false, 
+                ...state,
+                fetching: false,
                 error: action.payload
             }
         }
@@ -26,6 +26,15 @@ export default function reducer(state={
                 singleMovie: action.payload
             }
         }
+        case 'CLEAR_MOVIE': {
+            return {
+                singleMovie: [],
+                fetching: false,
+                fetched: false,
+                error: null
+            }
+        }
+        default:
+            return state;
     }
-    return state;
 }

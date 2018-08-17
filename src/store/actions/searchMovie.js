@@ -20,3 +20,11 @@ export function fetchSearchMovie(searchString) {
             })
     }
 }
+
+export function clearSearch() {
+    return function(dispatch) {
+        dispatch({
+            type: 'CLEAR_SEARCH'
+        })
+    }
+}
