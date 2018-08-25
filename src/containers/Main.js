@@ -3,30 +3,29 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import MovieList from './MovieList';
 import NowPlayingFull from './NowPlayingFull';
 import SingleMovie from './SingleMovie';
-import Navbar from '../components/Navbar';
-import SearchBar from '../components/SearchBar';
-
+import Header from './Header';
 
 const Main = () => {
     return (
         <div>
-            <Navbar />
-            <SearchBar />
+            <Header />
             <Switch>
                 <Route exact path='/' render={(props) => (
-                    <div>
+                    <div className="main-wrapper">
                         <NowPlayingFull {...props} />
                     </div>
                 )}
                 />
                 <Route exact path='/search' render={(props) => (
-                    <div>
+                    <div className="main-wrapper">
                         <MovieList {...props} />
                     </div>
                 )}
                 />
                 <Route exact path='/view/:movieId' render={(props) => (
-                    <SingleMovie {...props} />
+                    <div className="main-wrapper">
+                        <SingleMovie {...props} />
+                    </div>
                 )}
                 />
                 <Route exact path='/comingsoon' render={() => (

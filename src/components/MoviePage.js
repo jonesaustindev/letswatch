@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 import ActorCard from './ActorCard';
 import YouTube from 'react-youtube';
 import VideoPlayer from './VideoPlayer';
+import { Link } from 'react-router-dom';
 
 const MoviePage = ({ result }) => {
     const background = `https://image.tmdb.org/t/p/original${result.backdrop_path}`;
@@ -23,7 +24,7 @@ const MoviePage = ({ result }) => {
 
     return (
         <div>
-            <div className="movie-page">
+            <section className="movie-page">
                 <div className="movie-page-header" id="bg-overlay" style={style}>
                     <div className="movie-content container">
                         <h1>{result.original_title}</h1>
@@ -63,17 +64,23 @@ const MoviePage = ({ result }) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <i className="far fa-star"></i>
-                                    <i className="far fa-heart"></i>
-                                    <i className="far fa-bookmark"></i>
+                                    <Link to='/comingsoon'>
+                                        <i className="far fa-star"></i>
+                                    </Link>
+                                    <Link to='/comingsoon'>
+                                        <i className="far fa-heart"></i>
+                                    </Link>
+                                    <Link to='/comingsoon'>
+                                        <i className="far fa-bookmark"></i>
+                                    </Link>
                                 </div>
-                                <p>{result.overview}</p>
+                                <p className="movie-overview">{result.overview}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="top-billed-cast">
+            </section>
+            <section className="top-billed-cast container">
                 <h3>Top Billed Cast</h3>
                 <div className="cast">
                     {
@@ -82,8 +89,8 @@ const MoviePage = ({ result }) => {
                         })
                     }
                 </div>
-            </div>
-            <div className="trailer text-center">
+            </section>
+            <section className="trailer text-center">
                 {
                     result.videos && result.videos.results.slice(0, 1).map((results, index) => {
                         return <VideoPlayer
@@ -92,7 +99,7 @@ const MoviePage = ({ result }) => {
                         />
                     })
                 }
-            </div>
+            </section>
         </div>
     )
 }

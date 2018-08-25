@@ -5,20 +5,20 @@ export default function reducer(state={
     error: null
 }, action) {
     switch (action.type) {
-        case 'FETCH_NOWPLAYING': {
+        case 'FETCH_POPULAR': {
             return {
                 ...state, 
                 fetching: true
             }
         }
-        case 'FETCH_NOWPLAYING_REJECTED': {
+        case 'FETCH_POPULAR_REJECTED': {
             return {
                 ...state, 
                 fetching: false, 
                 error: action.payload
             }
         }
-        case 'FETCH_NOWPLAYING_FULFILLED': {
+        case 'FETCH_POPULAR_FULFILLED': {
             return {
                 ...state,
                 fetching: false,

@@ -2,11 +2,15 @@ import { combineReducers } from 'redux';
 import nowPlaying from './nowPlaying';
 import searchMovie from './searchMovie';
 import viewMovie from './viewMovie';
+import popular from './popular';
+import upcoming from './upcoming';
 
 const appReducer = combineReducers({
     nowPlaying,
     searchMovie,
-    viewMovie
+    viewMovie,
+    popular,
+    upcoming
 });
 
 const rootReducer = (state, action) => {

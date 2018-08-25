@@ -41,6 +41,9 @@ class SearchBar extends Component {
 
     render() {
         const { searchDisplay, toSearch } = this.state;
+        const textPlaceholder = (
+            <i class="fas fa-search"> Movie Title</i>
+        )
 
         let searched;
         if(toSearch === true) {
@@ -49,13 +52,13 @@ class SearchBar extends Component {
             searched = <Redirect to='/' />;
         }
         return (
-            <div>
+            <div className="search-bar">
                 <input
                     className="container-fluid"
                     type='text'
                     value={searchDisplay}
                     onChange={e => this.doSearch(e)}
-                    placeholder='Movie Title'
+                    placeholder='Search by movie title'
                 />
                 {searched}
             </div>

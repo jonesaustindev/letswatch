@@ -20,7 +20,7 @@ export default class VideoPlayer extends Component {
     render() {
         return (
             <div>
-                <YouTube videoId={this.state.videoId} onReady={this.onReady} />
+                <YouTube id="movie-trailer" videoId={this.state.videoId} onReady={this.onReady} />
             </div>
         )
     }

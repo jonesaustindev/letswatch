@@ -7,7 +7,7 @@ import store from './store/Store';
 const App = () => (
   <Provider store={store}>
     <Router>
-      <div className='App grid-container'>
+      <div className='App'>
         <Main />
       </div>
     </Router>
