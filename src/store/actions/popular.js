@@ -5,7 +5,7 @@ export function fetchPopular() {
         dispatch({
             type: 'FETCH_POPULAR'
         });
-        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`)
+        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&region=US`)
             .then(res => {
                 dispatch({
                     type: 'FETCH_POPULAR_FULFILLED',

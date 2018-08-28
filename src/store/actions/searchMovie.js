@@ -5,7 +5,7 @@ export function fetchSearchMovie(searchString) {
         dispatch({
             type: 'FETCH_SEARCH'
         });
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchString}`)
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchString}&region=US`)
             .then(res => {
                 dispatch({
                     type: 'FETCH_SEARCH_FULFILLED',

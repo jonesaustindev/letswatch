@@ -5,7 +5,7 @@ export function fetchNowPlaying() {
         dispatch({
             type: 'FETCH_NOWPLAYING'
         });
-        axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`)
+        axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&region=US`)
             .then(res => {
                 dispatch({
                     type: 'FETCH_NOWPLAYING_FULFILLED',
