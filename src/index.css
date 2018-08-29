@@ -12,8 +12,24 @@ body {
   background: linear-gradient(90deg, rgba(175,71,60,1) 30%, rgba(140,56,48,1) 95%);
 }
 
-#letswatch {
-  
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(247,247,247, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  border-color: rgb(247,247,247);
+} 
+
+button.navbar-toggler {
+  color: #f7f7f7;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: #f7f7f7;
+}
+
+.icon-bar {
+  color: #f7f7f7;
 }
 
 .navbar a {
@@ -50,6 +66,14 @@ body {
   margin: 0;
 }
 
+.in-theaters {
+  grid-column: 1 / span 3;
+}
+
+.popular-movies {
+  grid-column: 4 / span 5;
+}
+
 .banner {
   grid-column: 1 / span 5;
 }
@@ -69,6 +93,21 @@ body {
 
 .side-content {
   grid-column: 4 / span 5;
+}
+
+@media screen and (max-width: 1024px) {
+  .gallery {
+    grid-column: 1 / span 5;
+  }
+
+  .in-theaters {
+    grid-column: 1 / span 5;
+  }
+
+  .popular-movies {
+    padding-top: 40px;
+    grid-column: 1 / span 5;
+  }
 }
 
 .close {
@@ -182,6 +221,13 @@ item4 {
 .item5 {
   grid-row: span 1;
   grid-column: span 1;
+}
+
+@media screen and (max-width: 768px) {
+  .item1, .item2, .item3, .item4, .item5 {
+    grid-row: span 2;
+    grid-column: span 5;
+  } 
 }
 
 .popular-titles {

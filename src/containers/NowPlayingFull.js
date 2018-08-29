@@ -34,47 +34,51 @@ class NowPlayingFull extends Component {
                         </div>
                     </div>
 
-                    <div className="homepage-title">
-                        <h5>In Theaters</h5>
-                    </div>
+                    <section className="in-theaters">
+                        <div className="homepage-title">
+                            <h5>In Theaters</h5>
+                        </div>
 
-                    <div className="side-content-title container">
-                        <h5>Popular</h5>
-                    </div>
-
-                    <section className="gallery">
-                        {
-                            nowPlaying.movies.slice(0, 5).map((result, index) => {
-                                const dbURL = `https://image.tmdb.org/t/p/original${result.backdrop_path}`
-                                return (
-                                    <div key={index} className={`item item${index + 1} h${this.randomNumber()} v${this.randomNumber()}`}>
-                                        <img alt={result.title} src={dbURL} />
-                                        <div className="item__overlay">
-                                            <Link to={`/view/${result.id}`}>
-                                                <button>View More</button>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </section>
-
-                    <section className="side-content container">
-                        <div>
+                        <div className="gallery">
                             {
-                                popular.movies.slice(0, 8).map((result, index) => {
+                                nowPlaying.movies.slice(0, 5).map((result, index) => {
+                                    const dbURL = `https://image.tmdb.org/t/p/original${result.backdrop_path}`
                                     return (
-                                        <div key={index}>
-                                            <Link to={`/view/${result.id}`}>
-                                                <p className="popular-titles">{result.title}</p>
-                                            </Link>
+                                        <div key={index} className={`item item${index + 1} h${this.randomNumber()} v${this.randomNumber()}`}>
+                                            <img alt={result.title} src={dbURL} />
+                                            <div className="item__overlay">
+                                                <Link to={`/view/${result.id}`}>
+                                                    <button>View More</button>
+                                                </Link>
+                                            </div>
                                         </div>
                                     )
                                 })
                             }
                         </div>
                     </section>
+
+                    <div className="popular-movies">
+                        <div className="side-content-title">
+                            <h5>Popular</h5>
+                        </div>
+
+                        <section className="side-content">
+                            <div>
+                                {
+                                    popular.movies.slice(0, 8).map((result, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <Link to={`/view/${result.id}`}>
+                                                    <p className="popular-titles">{result.title}</p>
+                                                </Link>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </section>
+                    </div>
                 </div>
                 <section className="signup-content">
                     <div className="container text-center">

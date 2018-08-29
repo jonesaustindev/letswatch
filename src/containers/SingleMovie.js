@@ -19,7 +19,6 @@ class SingleMovie extends Component {
 
     render() {
         const singleMovie = this.props.viewMovie.singleMovie;
-        console.log(this.props);
         return (
             <div>
                 {
