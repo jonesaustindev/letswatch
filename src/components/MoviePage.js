@@ -15,11 +15,11 @@ const MoviePage = ({ result }) => {
     };
 
     const style = {
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${background}'`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${background}'`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         width: '100%',
-        height: '600px'
+        height: '750px'
     }
 
     return (
@@ -74,7 +74,10 @@ const MoviePage = ({ result }) => {
                                         <i className="far fa-bookmark"></i>
                                     </Link>
                                 </div>
-                                <p className="movie-overview">{result.overview}</p>
+                                <div className="movie-overview-container">
+                                    <h3>Overview</h3>
+                                    <p className="movie-overview">{result.overview}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

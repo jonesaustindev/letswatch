@@ -4,7 +4,8 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const errorHandler = require('./handlers/error');
-const authRoutes = require('./routes/auth');
+const db = require('./db');
+// const authRoutes = require('./routes/auth');
 
 const PORT = 8081;
 
@@ -65,21 +66,33 @@ app.use(bodyParser.json());
 //         console.log('Error getting documents', err);
 //     });
 
-const email = 'email@email.com';
-const pass = '1234';
+// db.auth().createUserWithEmailAndPassword({
+//     email: 'joe@gmail.com',
+//     password: '1234'
+// })
+//     .catch(err => {
+//         console.log(err.message);
+//     });
 
-db.auth.createUserWithEmailAndPassword(email, pass)
+// db.auth().onAuthStateChanged(firebaseUser => {
+//     if(firebaseUser) {
+//         console.log(firebaseUser);
+//     } else {
+//         console.log('not logged in');
+//     }
+// })
+const uiId = 'bob123'
+const additionalClaims = {
+    premiumAccount: true
+}
+
+db.auth().createCustomToken(uiId, additionalClaims)
+    .then((customToken) => {
+        console.log(customToken);
+    })
     .catch(err => {
-        console.log(err.message);
-    });
-
-db.auth().onAuthStateChanged(firebaseUser => {
-    if(firebaseUser) {
-        console.log(firebaseUser);
-    } else {
-        console.log('not logged in');
-    }
-})
+        console.log(err);
+    })
 
 
 // end testing //
@@ -91,13 +104,13 @@ db.auth().onAuthStateChanged(firebaseUser => {
 // end routes //
 
 // errors //
-// app.use(function (req, res, next) {
-//     let err = new Error('Not Found');
-//     err.status = 404;
-//     next(err);
-// });
+app.use(function (req, res, next) {
+    let err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
 
-// app.use(errorHandler);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`Let's Watch server started on port ${PORT}`);

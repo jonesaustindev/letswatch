@@ -3,7 +3,7 @@ body {
   padding: 0;
   background: white;
   /* background: linear-gradient(90deg, rgba(37,48,49,1) 0%, rgba(65,85,87,1) 95%); */
-  font-family: 'Pontano Sans', sans-serif;
+  font-family: 'Muli', sans-serif;
 }
 
 /* Navbar */
@@ -213,7 +213,7 @@ button.navbar-toggler {
   grid-column: span 1;
 }
 
-item4 {
+.item4 {
   grid-row: span 1;
   grid-column: span 1;
 }
@@ -379,25 +379,60 @@ item4 {
   margin-bottom: 0;
 }
 
-.movie-content-poster {
-  height: 450px;
-  margin-top: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
 .movie-content-grid {
+  margin-top: 70px;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 12px;
   align-items: top;
 }
 
-.movie-content-details {
-  margin-top: 4px;
+.movie-content-poster {
+  height: 450px;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  grid-column: span 1;
 }
 
-#runtime {
-  padding-bottom: 20px;
+.movie-content-details {
+  margin-top: 3px;
+  grid-column: span 3;
+}
+
+.movie-overview-container {
+  margin-top: 20px;
+}
+
+@media(max-width: 768px) {
+  .movie-content-grid {
+    margin-top: 0;
+  }
+  .movie-content-poster {
+    height: 200px;
+    grid-column: span 4;
+  }
+
+  .movie-content-details {
+    grid-column: span 4;
+  }
+
+  .movie-overview-container {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+@media(max-width: 425px) {
+  .movie-content-poster {
+    display: none;
+  }
+
+  .movie-content-details {
+    margin-top: 80px;
+  }
+  .movie-content-details h2 {
+    font-size: 26px;
+  }
 }
 
 .movie-interactions {
@@ -429,11 +464,22 @@ item4 {
   margin-bottom: 50px;
 }
 
+.card {
+  width: 202px;
+  height: 300px;
+}
+
 .actor-card {
   display: inline-block;
-  height: 150px;
-  width: auto;
   justify-content: space-around;
+}
+
+.card-img-top {
+  max-height: 300px;
+}
+
+.card-body {
+  padding-bottom: 50px;
 }
 
 .actor-card p{
@@ -454,6 +500,9 @@ item4 {
 
 #movie-trailer {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  width: 80%;
+  max-width: 800px;
 }
 
 /* Modal */
