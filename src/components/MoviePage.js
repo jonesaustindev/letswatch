@@ -1,5 +1,4 @@
 import React from 'react';
-import Moment from 'react-moment';
 import ActorCard from './ActorCard';
 import YouTube from 'react-youtube';
 import VideoPlayer from './VideoPlayer';
@@ -28,9 +27,7 @@ const MoviePage = ({ result }) => {
                 <div className="movie-page-header" id="bg-overlay" style={style}>
                     <div className="movie-content container">
                         <h1>{result.original_title}</h1>
-                        <Moment className="font-italic" format="YYYY">
-                            <p>{result.release_date}</p>
-                        </Moment>
+                        <p>{result.release_date.slice(0, 4)}</p>
                         <div className="movie-content-grid">
                             <img className="movie-content-poster" src={posterUrl} alt="movie poster" />
                             <div className="movie-content-details">
@@ -83,17 +80,20 @@ const MoviePage = ({ result }) => {
                     </div>
                 </div>
             </section>
-            <section className="top-billed-cast container">
-                <h3>Top Billed Cast</h3>
-                <div className="cast">
-                    {
-                        result.credits && result.credits.cast.slice(0, 5).map((results, index) => {
-                            return <ActorCard results={results} key={index} />
-                        })
-                    }
+            <section className="top-billed-cast">
+                <div className="container">
+                    <h3>Top Billed Cast</h3>
+                    <div className="cast row">
+                        {
+                            result.credits && result.credits.cast.slice(0, 6).map((results, index) => {
+                                return <ActorCard results={results} key={index} />
+                            })
+                        }
+                    </div>
                 </div>
             </section>
             <section className="trailer text-center">
+                <h3>Videos</h3>
                 {
                     result.videos && result.videos.results.slice(0, 1).map((results, index) => {
                         return <VideoPlayer

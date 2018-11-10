@@ -1,5 +1,4 @@
 import React from 'react';
-import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 
 const Movie = ({ result }) => {
@@ -13,9 +12,7 @@ const Movie = ({ result }) => {
                 <h3 className="card-title">{result.title}</h3>
                 <h5 className="card-text">User Rating {result.vote_average * 10}%</h5>
                 <h6 className="card-text">
-                    <Moment className="font-italic" format="YYYY">
-                        <p>{result.release_date}</p>
-                    </Moment>
+                    <p>{result.release_date.slice(0, 4)}</p>
                 </h6>
                 <div className="movie-card-overview">
                     <p>{overview}</p>

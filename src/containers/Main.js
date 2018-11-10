@@ -4,6 +4,7 @@ import MovieList from './MovieList';
 import NowPlayingFull from './NowPlayingFull';
 import SingleMovie from './SingleMovie';
 import Header from './Header';
+import Footer from '../components/Footer';
 
 const Main = () => {
     return (
@@ -34,6 +35,7 @@ const Main = () => {
                     </div>
                 )} />
             </Switch>
+            <Footer />
         </div>
     )
 }

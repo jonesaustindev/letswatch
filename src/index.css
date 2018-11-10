@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: white;
+  background: #FFFBFF;
   /* background: linear-gradient(90deg, rgba(37,48,49,1) 0%, rgba(65,85,87,1) 95%); */
   font-family: 'Muli', sans-serif;
 }
@@ -47,6 +47,14 @@ button.navbar-toggler {
 }
 
 /* End Search Bar */
+
+/* Footer */
+.footer {
+  background-color: #3c3c3c;
+  color: #f7f7f7;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
 
 /* Now Playing/Homepage */
 .banner {
@@ -237,8 +245,8 @@ button.navbar-toggler {
 .signup-content {
   /* background: #af473c; */
   background: linear-gradient(90deg, rgba(175,71,60,1) 30%, rgba(140,56,48,1) 95%);
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   margin-top: 25px;
   color: #f7f7f7;
 }
@@ -377,6 +385,7 @@ button.navbar-toggler {
 
 .movie-content h1{
   margin-bottom: 0;
+  font-weight: 600;
 }
 
 .movie-content-grid {
@@ -460,35 +469,36 @@ button.navbar-toggler {
 }
 
 .top-billed-cast {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.card {
-  width: 202px;
-  height: 300px;
-}
-
-.actor-card {
-  display: inline-block;
-  justify-content: space-around;
-}
-
-.card-img-top {
-  max-height: 300px;
-}
-
-.card-body {
+  padding-top: 50px;
   padding-bottom: 50px;
 }
 
-.actor-card p{
-  padding: 0;
-  margin: 0;
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
 }
 
-.actor-name {
+.card {
+  max-width: 270px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media(max-width: 576px) {
+  .card {
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+  }
+}
+
+.actor-card .actor-name {
   font-size: 18px;
+  font-weight: 600;
+}
+
+.actor-card .character-name {
+  padding-bottom: 10px;
 }
 
 .trailer {
@@ -503,6 +513,10 @@ button.navbar-toggler {
   margin: auto;
   width: 80%;
   max-width: 800px;
+}
+
+.trailer h3 {
+  color: #f7f7f7;
 }
 
 /* Modal */
