@@ -19,12 +19,12 @@ export default class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/comingsoon'>
+                                <Link to='/login'>
                                     <a className="nav-link" href="#">Login</a>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/comingsoon'>
+                                <Link to='/signup'>
                                     <a className="nav-link" href="#">Signup</a>
                                 </Link>
                             </li>

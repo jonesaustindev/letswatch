@@ -541,3 +541,9 @@ button.navbar-toggler {
   color:#f7f7f7;
   opacity:1;
 }
+
+/* Auth Form */
+#auth-form {
+  padding-top: 100px;
+  height: 80vh;
+}
