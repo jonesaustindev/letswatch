@@ -15,7 +15,19 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review'
+    }],
+    likes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Like'
+    }],
+    watchList: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'WatchList'
+    }]
 });
 
 // before user is saved, wait for password to hash then save the hashed password

@@ -19,7 +19,8 @@ class AuthForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const authType = this.props.signUp ? 'signup' : 'signin';
-        this.props.onAuth(authType, this.state).then(() => {
+        this.props.onAuth(authType, this.state)
+        .then(() => {
             this.props.history.push('/');
         })
         .catch(() => {
@@ -33,14 +34,14 @@ class AuthForm extends Component {
 
     // listen to change in route before returning
     history.listen(() => {
-        // removeError();
+        removeError();
     });
 
-    // {errors.message && (
-    //     <div className="alert alert-danger">
-    //         {errors.message}
-    //     </div>
-    // )}
+    {errors.message && (
+        <div className="alert alert-danger">
+            {errors.message}
+        </div>
+    )}
 
 
         return(
@@ -49,7 +50,11 @@ class AuthForm extends Component {
                     <div className="col-md-6 container">
                         <form onSubmit={this.handleSubmit}>
                             <h2>{heading}</h2>
-                            
+                            {errors.message && (
+                                <div className="alert alert-danger">
+                                    {errors.message}
+                                </div>
+                            )}
                             <label htmlFor="email">Email:</label>
                             <input 
                                 className="form-control" name="email" 
@@ -72,13 +77,6 @@ class AuthForm extends Component {
                                         onChange={this.handleChange} value={username} 
                                         id="username" 
                                         type="text" 
-                                    />
-                                    <label htmlFor="image-url">Image URL:</label>
-                                    <input 
-                                        className="form-control" name="profileImageUrl" 
-                                        onChange={this.handleChange}
-                                        id="image-url" 
-                                        type="text"
                                     />
                                 </div>
                             )}

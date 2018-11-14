@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { logout } from '../store/actions/auth';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
+    logout = e => {
+        e.preventDefault();
+        this.props.logout();
+    }
     render() {
+        const currentUser = this.props.currentUser.user.username;
         return (
             <div>
                 <nav className="navbar navbar-expand-md">
@@ -18,16 +26,33 @@ export default class Navbar extends Component {
                                     <a className="nav-link" href="/">Home</a>
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to='/login'>
-                                    <a className="nav-link" href="#">Login</a>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to='/signup'>
-                                    <a className="nav-link" href="#">Signup</a>
-                                </Link>
-                            </li>
+                            {this.props.currentUser.isAuthenticated ? (
+                                <div className="navbar-nav ml-auto">
+                                    <li className="nav-item">
+                                        <Link to ='/'>
+                                            <a className="nav-link">Hello, {currentUser}</a>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/'>
+                                            <a className="nav-link" onClick={this.logout}>Log out</a>
+                                        </Link>
+                                    </li>
+                                </div>
+                            ) : (
+                                    <div className="navbar-nav ml-auto">
+                                        <li className="nav-item">
+                                            <Link to='/login'>
+                                                <a className="nav-link">Login</a>
+                                            </Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to='/signup'>
+                                                <a className="nav-link">Signup</a>
+                                            </Link>
+                                        </li>
+                                    </div>
+                                )}
                         </ul>
                     </div>
                 </nav>
@@ -35,3 +60,11 @@ export default class Navbar extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        currentUser: state.currentUser
+    }
+}
+
+export default connect(mapStateToProps, { logout })(Navbar);

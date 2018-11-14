@@ -1,26 +1,35 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import MovieList from './MovieList';
 import NowPlayingFull from './NowPlayingFull';
 import SingleMovie from './SingleMovie';
 import Header from './Header';
 import Footer from '../components/Footer';
 import AuthForm from '../components/AuthForm';
+import { authUser } from '../store/actions/auth';
+import { removeError } from '../store/actions/errors';
+import withAuth from '../hocs/withAuth';
 
-const Main = () => {
+const Main = props => {
+    const { authUser, errors, removeError, currentUser } = props;
     return (
         <div>
-            <Header />
+            <Header currentUser={currentUser} />
             <Switch>
                 <Route exact path='/' render={(props) => (
                     <div className="main-wrapper">
-                        <NowPlayingFull {...props} />
+                        <NowPlayingFull 
+                            {...props} 
+                        />
                     </div>
                 )}
                 />
                 <Route exact path='/search' render={(props) => (
                     <div className="main-wrapper">
-                        <MovieList {...props} />
+                        <MovieList 
+                            {...props}
+                        />
                     </div>
                 )}
                 />
@@ -40,9 +49,9 @@ const Main = () => {
                     render={(props) => {
                         return (
                             <AuthForm
-                                // removeError={removeError}
-                                // errors={errors}
-                                // onAuth={authUser}
+                                removeError={removeError}
+                                errors={errors}
+                                onAuth={authUser}
                                 buttonText='Log in'
                                 heading='Welcome Back!'
                                 {...props}
@@ -52,14 +61,14 @@ const Main = () => {
                 />
                 <Route
                     exact
-                    path="/signup"
+                    path='/signup'
                     render={props => {
                         return (
                             <AuthForm
-                                // removeError={removeError}
-                                // errors={errors}
-                                // onAuth={authUser}
-                                // signUp
+                                removeError={removeError}
+                                errors={errors}
+                                onAuth={authUser}
+                                signUp
                                 buttonText="Sign me up"
                                 heading="Join the Let's Watch Community Today!"
                                 {...props}
@@ -74,6 +83,13 @@ const Main = () => {
     )
 }
 
+function mapStateToProps(state) {
+    return {
+        currentUser: state.currentUser,
+        errors: state.errors
+    };
+}
+
 export default withRouter(
-    (Main)
+    connect(mapStateToProps, { authUser, removeError })(Main)
 );
